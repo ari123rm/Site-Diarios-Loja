@@ -1,0 +1,20 @@
+{
+  "name": "axe-do-bamba",
+  "dependencies": {
+    "chart.js": "^4.4.3",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "pkg": "^5.8.1"
+  },
+  "bin": "./app.js",
+  "pkg": {
+    "assets": [
+      "/public/**",
+      "axeBamba.json"
+    ],
+    "targets": [
+      "node18"
+    ]
+  }
+}

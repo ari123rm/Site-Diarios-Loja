@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Axé do Bamba</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src = "/js/chart.js"> </script>
+</head>
+<body >
+    <div id = "tela-inicial">
+        <header>
+            <ul type= "none">
+                <li><h1>Axé do Bamba</h1></li>
+                <li><label for="selecionarCalendario">Diario: </label><input type="date" name="selecionarCalendario" id="calendario-input"><button id="butao-dia">Abrir Diario</button></li>
+            </ul>
+        </header>
+        <div id = "seletor-graficos">
+            <select name="tipo-grafico" id="tipo-grafico">
+                <option value="bar" selected>Gráfico de Barra</option>
+                <option value="line">Gráfico de Linha</option>
+                <option value="pie">Gráfico de Pizza</option>
+                <option value="doughnut">Gráfico de Rosca</option>
+            </select>
+            <select name="dados-grafico" id="dados-grafico">
+                <optgroup label = "Lucros">
+                    <option value="vendasXdespesas" selected>Vendas X Despesas</option>
+                </optgroup>
+                <optgroup label = "Valores Individuais">
+                    <option value="vendas">Vendas</option>
+                    <option value="despesas">Despesas</option>
+                    <option value="vendedor">Vendas de Funcionários</option>
+                    <option value="quantidadeVendas">Quantidade de Vendas</option>
+                    <option value="depositos">Depósitos</option>
+                </optgroup>
+                <optgroup label = "Totais">
+                    <option value="totalVenda">Total de Vendas</option>
+                    <option value="totalDespesas">Total de Despesas</option>
+                </optgroup>
+                <!--
+                <optgroup label = "Outros">
+                    <option value="horarioEntrada">Horários de Entrada</option>
+                    <option value="horarioSaida">Horários de Saída</option>
+                </optgroup>
+                -->
+            </select>
+            <ul type="none" id = "periodo-grafico">
+                <li>
+                    <input type="hidden" name="data1" id="grafico-data1">
+                    <input type="hidden" name="data2" id="grafico-data2">
+                </li>
+                <li>
+                    <select name="TipoPeriodo-grafico" id="tipo-periodo-grafico">
+                        <option value="Geral" selected>Geral</option>
+                        <option value="Diario">Diario</option>
+                        <option value="Semanal">Semanal</option>
+                        <option value="Mensal">Mensal</option>
+                        <option value="Anual">Anual</option>
+                        <option value="Custom">Custom</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div id = "info-grafico">
+                
+                <div id = "grafico">
+                    <canvas id="chart-grafico"></canvas>
+                </div>
+        </div>
+        
+
+        
+    </div>
+    <div id = "tela-dia" >
+        <div id = "topo-dia" style = "display: grid; padding-bottom: 5px;">
+            <button id = "sair-dia">X</button>
+        </div>
+        
+        <ul id = "titulo-dia" type = "none">
+            <li><h2 class= "semana"></h2></li>
+            <li><h2 class = "feriado"></h2></li>
+            <li>
+                <div>
+                <label for="timeEntrada">Hora de entrada</label>
+                <input type="time" name="horaEntrada" id="timeEntrada">
+                <label for="timeSaida">Hora de saída</label>
+                <input type="time" name="horaSaida" id="timeSaida">
+                </div>
+            </li>
+           
+            <li><h2 id="dia">Dia: <span class = "data"></span></h2></li>
+            
+        
+        </ul>
+        <div id = "financias-dia">
+            <div id = "caixa">
+                <table>
+                    <tr>
+                        <td><label for="caixa-inicial">Caixa Inicial: </label></td>
+                        <td><label for="caixa-inicial" class = "sifrao">R$</label><input type="number" name="caixa-inicial" id="caixa-inicial" class="real" placeholder="00,00"></td>
+                        <td><p>Esperado: <span id = "caixa-inicial-esperado">R$ 00.00</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><label for="caixa-final">Caixa Final: </label></td>
+                        <td><label for="caixa-final" class = "sifrao">R$</label><input type="number" name="caixa-final" id="caixa-final" class="real" placeholder="00,00"></td>
+                        <td><p>Esperado: <span id = "caixa-final-esperado">R$ 00.00</span></p></td>
+                    </tr>
+                </table>
+            </div>
+            <div id = "despesas-vendas">
+                <ul type = "none" id = "vendas">
+                    <li><h3>Vendas</h3></li>
+                    <li><label for="venda-dinheiro">Dinheiro: </label><label for="venda-dinheiro" class = "sifrao">R$</label><input type="number" name="dinheiro" id="venda-dinheiro" class="real" placeholder="00,00"></li>
+                    <li><label for="venda-dinheiro">PIX: </label><label for="venda-pix" class = "sifrao">R$</label><input type="number" name="pix" id="venda-pix" class="real"placeholder="00,00"></li>
+                    <li><label for="venda-dinheiro">Débito: </label><label for="venda-debito" class = "sifrao">R$</label><input type="number" name="debito" id="venda-debito" class="real"placeholder="00,00"></li>
+                    <li><label for="venda-dinheiro">Crédito: </label><label for="venda-credito" class = "sifrao">R$</label><input type="number" name="credito" id="venda-credito" class="real"placeholder="00,00"></li>
+                    <li><h4>Total : R$ <span id = "vendas-total">00.00</span></h4></li>
+                </ul>
+                <datalist id="auto-despesas">
+                    <option value="Almoço Ana"></option>
+                    <option value="Almoço Bianca"></option>
+                    <option value="Almoço Jamerson"></option>
+                    <option value="Almoço João"></option>
+                    <option value="Almoço Lucas"></option>
+                    <option value="Transporte Ana"></option>
+                    <option value="Transporte Lucas"></option>
+                    <option value="Aluguel"></option>
+                    <option value="Luz"></option>
+                    <option value="Internet"></option>
+                    <option value="IPTU"></option>
+                    <option value="Seguro"></option>
+                    <option value="Embalagem/Limpeza"></option>
+                    <option value="Contador"></option>
+                    <option value="Empréstimo"></option>
+                    <option value="Depósito"></option>
+                    <option value="Outro"></option>
+                    <option value="nada">Nada</option>
+                </datalist>
+                <datalist id = "dinheiro/pix">
+                    
+                </datalist>
+                <ul type = "none" id="despesas">
+                    <li><h3>Despesas</h3></li>
+                    <li><input type="text" name="despesas" class="tipo-despesa" autocomplete="off" placeholder="Motivo" list = "auto-despesas"><select name="opcao" id="despesas-opcao" class = "dinheiroPix" placeholder = "Dinheiro ou PIX" list = "dinheiro/pix" ><option value="dinheiro">Dinheiro</option><option value="pix">PIX</option></select><label for="despesas-valor" class = "sifrao">R$</label><input type="number" name="despesas-valor" id="despesas-valor" class="real despesas-money" placeholder="00,00"></li>
+                    <li><button id = "add-despesa">+</button></li>
+                    <li><h4>Total : R$ <span id = "despesas-total">00.00</span></h4></li>
+                </ul>
+            </div>
+            
+            <div id = "horarios">
+                <datalist id = "turnos">
+                    <option value="Matutino">Manhã</option>
+                    <option value="Vespertino">Tarde</option>
+                    <option value="Completo">Integral</option>
+                </datalist>
+                <datalist id = "funcionarios">
+                    <option value="Ana Vitória"></option>
+                    <option value="Bianca"></option>
+                    <option value="Jamerson"></option>
+                    <option value="João"></option>
+                    <option value="Lucas"></option>
+                    
+                    
+                </datalist>
+                <table>
+                    <tr>
+                        <td>Horário</td>
+                        <td>Funcionário</td>
+                        <td>Nº de Vendas</td>
+                        <td>Valor</td>
+                    </tr>
+                    <tr class = "horario-celula">
+                        <td><input type="text" name = "turno" class = "turno-horarios" autocomplete="on" placeholder="Horário" list = "turnos"></td>
+                        <td><input type="text" name = "funcionario" class= "funcionario-horarios" autocomplete="on" placeholder="Funcionário" list= "funcionarios"></td>
+                        <td><input type="number" name = "quantidade-vendas" class = "quantidade-vendas-horarios" placeholder="0"></td>
+                        <td><label for="horario-venda" class = "sifrao">R$</label><input type="number" name="horario-vendas" id="horario-venda" class="real horario-vendas-input" placeholder="00,00"></td>
+                    </tr>
+                </table>
+                <button id = "add-horario">+</button>
+                <h4>Total: R$ <span id = "horario-total">00.00</span></h4>
+            </div>
+          
+        </div>
+        
+        <button type="button" id = "save-dia">Salvar Dia</button>
+    </div>
+    
+</body>
+
+<script src = "/js/classes.js"> </script>
+
+<script src="/js/telinha.js"></script>
+
+<script src = "/js/graficos.js"> </script>
+
+
+</html>
