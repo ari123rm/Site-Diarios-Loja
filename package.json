@@ -1,5 +1,5 @@
 {
-  "name": "axe-do-bamba",
+  "name": "loja-diarios",
   "dependencies": {
     "chart.js": "^4.4.3",
     "express": "^4.19.2",
@@ -11,7 +11,7 @@
   "pkg": {
     "assets": [
       "/public/**",
-      "axeBamba.json"
+      "loja.json"
     ],
     "targets": [
       "node18"

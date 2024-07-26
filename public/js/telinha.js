@@ -1,7 +1,7 @@
-const axeBamba = new Loja();
+const loja = new Loja();
 
 //Puxa o diario do banco de dados
-function buildAxeBamba(){
+function buildloja(){
     fetch("/diarios").then((response) =>{
         response.json().then((diarios)=>{
             diarios.diarios.forEach((diario)=>{
@@ -22,12 +22,12 @@ function buildAxeBamba(){
                     diarioObj.addTurno(new Turno(element.periodo,element.nome,parseInt(element.quantidadeVendas),parseFloat(element.valor)))
                 })
     
-                axeBamba.addDiario(diarioObj);
+                loja.addDiario(diarioObj);
             })
         })
     })
 }
-buildAxeBamba()
+buildloja()
 
 //função para escrever no banco de dados
 function escrever__json(){
@@ -36,7 +36,7 @@ function escrever__json(){
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(axeBamba)
+    body: JSON.stringify(loja)
 })
 .then(response => response.json())
 .then(data => {
@@ -204,9 +204,9 @@ function esperadoBuild(){
     let esperadoInicial;
     let copiaDataObj = new Date(dataObj.toDateString());
     let ontem = new Date(copiaDataObj.setDate(copiaDataObj.getDate() - 1)).toLocaleDateString();
-    if(axeBamba.procurarDiario(ontem) != -1){
+    if(loja.procurarDiario(ontem) != -1){
         
-        esperadoInicial = axeBamba.procurarDiario(ontem).caixaFinal
+        esperadoInicial = loja.procurarDiario(ontem).caixaFinal
         caixaInicialEsperado.innerText = `R$ ${esperadoInicial.toFixed(2)}`;
     }else{
         esperadoInicial = 0;
@@ -376,21 +376,21 @@ function atualizaDia(){
         dataObj = dataAtual;
     }
     //Verifica se a data já foi colocada no diario
-    if(axeBamba.procurarDiario(dataObj.toLocaleDateString()) != -1){
+    if(loja.procurarDiario(dataObj.toLocaleDateString()) != -1){
         
-        horaEntrada.value = axeBamba.procurarDiario(dataObj.toLocaleDateString()).horarioEntrada;
-        horaSaida.value  = axeBamba.procurarDiario(dataObj.toLocaleDateString()).horarioSaida;
+        horaEntrada.value = loja.procurarDiario(dataObj.toLocaleDateString()).horarioEntrada;
+        horaSaida.value  = loja.procurarDiario(dataObj.toLocaleDateString()).horarioSaida;
 
-        caixaInicial.value = (axeBamba.procurarDiario(dataObj.toLocaleDateString()).caixaInicial*100).toFixed(0);
-        caixaFinal.value  = (axeBamba.procurarDiario(dataObj.toLocaleDateString()).caixaFinal*100).toFixed(0);
+        caixaInicial.value = (loja.procurarDiario(dataObj.toLocaleDateString()).caixaInicial*100).toFixed(0);
+        caixaFinal.value  = (loja.procurarDiario(dataObj.toLocaleDateString()).caixaFinal*100).toFixed(0);
 
-        vendasInput[0].value  = ( axeBamba.procurarDiario(dataObj.toLocaleDateString()).dinheiro *100).toFixed(0);
-        vendasInput[1].value =  (axeBamba.procurarDiario(dataObj.toLocaleDateString()).pix*100).toFixed(0);
-        vendasInput[2].value  = (axeBamba.procurarDiario(dataObj.toLocaleDateString()).debito*100).toFixed(0);
-        vendasInput[3].value =  (axeBamba.procurarDiario(dataObj.toLocaleDateString()).credito*100).toFixed(0);
+        vendasInput[0].value  = ( loja.procurarDiario(dataObj.toLocaleDateString()).dinheiro *100).toFixed(0);
+        vendasInput[1].value =  (loja.procurarDiario(dataObj.toLocaleDateString()).pix*100).toFixed(0);
+        vendasInput[2].value  = (loja.procurarDiario(dataObj.toLocaleDateString()).debito*100).toFixed(0);
+        vendasInput[3].value =  (loja.procurarDiario(dataObj.toLocaleDateString()).credito*100).toFixed(0);
         
 
-        axeBamba.procurarDiario(dataObj.toLocaleDateString()).despesas.forEach((element,index) => {
+        loja.procurarDiario(dataObj.toLocaleDateString()).despesas.forEach((element,index) => {
             if(index > 0 && tipoDespesa.length == index)addHtmlDespesas();
             tipoDespesa[index].value = element.motivo;
             dinheiroPix[index].value = element.dinheiroPix;
@@ -398,7 +398,7 @@ function atualizaDia(){
             valorDespesa[index].value = (element.valor*100).toFixed(0);
         })
         
-        axeBamba.procurarDiario(dataObj.toLocaleDateString()).turnos.forEach((element,index) => {
+        loja.procurarDiario(dataObj.toLocaleDateString()).turnos.forEach((element,index) => {
             
             if(index > 0 && horarioTurno.length == index)addHtmlHorario();
             horarioTurno[index].value = element.periodo;
@@ -489,7 +489,7 @@ function verificarTotalVH(){
 }
 buttonSaveDia.onclick = () =>{
     if(verificarInputsDia() && verificarTotalVH()){
-        if(axeBamba.procurarDiario(dataObj.toLocaleDateString()) === -1){
+        if(loja.procurarDiario(dataObj.toLocaleDateString()) === -1){
             let diaSave;
             diaSave = new Diario(dataObj,horaEntrada.value,horaSaida.value);
             diaSave.caixaInicial = parseFloat(caixaInicial.value);
@@ -508,10 +508,10 @@ buttonSaveDia.onclick = () =>{
                 diaSave.addTurno(new Turno(element.value,horarioFuncionario[index].value,parseInt(horarioQuantidadeVendas[index].value),parseFloat(horarioVendas[index].value)))
             })
     
-            axeBamba.addDiario(diaSave);
+            loja.addDiario(diaSave);
             console.log(JSON.stringify(diaSave))
             escrever__json();
-            alert(`Dia ${axeBamba.procurarDiario(diaSave.dia.toLocaleDateString()).dia.toLocaleDateString()} foi salvo`);
+            alert(`Dia ${loja.procurarDiario(diaSave.dia.toLocaleDateString()).dia.toLocaleDateString()} foi salvo`);
     
         }else{
             let diaAtualizado;
@@ -530,10 +530,10 @@ buttonSaveDia.onclick = () =>{
             horarioTurno.forEach((element,index) =>{
                 diaAtualizado.addTurno(new Turno(element.value,horarioFuncionario[index].value,parseInt(horarioQuantidadeVendas[index].value),parseFloat(horarioVendas[index].value)))
             })
-            axeBamba.diario[axeBamba.idDiario(diaAtualizado.dia.toLocaleDateString())] = diaAtualizado;
+            loja.diario[loja.idDiario(diaAtualizado.dia.toLocaleDateString())] = diaAtualizado;
             console.log(JSON.stringify(diaAtualizado))
             escrever__json();
-            alert(`Dia ${axeBamba.procurarDiario(diaAtualizado.dia.toLocaleDateString()).dia.toLocaleDateString()} foi Alterado`);
+            alert(`Dia ${loja.procurarDiario(diaAtualizado.dia.toLocaleDateString()).dia.toLocaleDateString()} foi Alterado`);
             
         
         }
@@ -543,7 +543,7 @@ buttonSaveDia.onclick = () =>{
     }
 
    
-    console.log(axeBamba);
+    console.log(loja);
 }
 
 

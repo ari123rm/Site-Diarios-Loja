@@ -386,7 +386,7 @@ let grafico = new Chart(lucroDespesa, {} );
 
 function carregarTabela(){
   grafico.destroy();
-  let dados = axeBamba.listaPeriodo(data1Grafico.value,periodoGrafico.value,data2Grafico.value);
+  let dados = loja.listaPeriodo(data1Grafico.value,periodoGrafico.value,data2Grafico.value);
   
   const cfg = {
     type: tipoGrafico.value,
