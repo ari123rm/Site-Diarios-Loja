@@ -509,6 +509,7 @@ function verificarTotalVH(){
     return verificador;
 }
 buttonSaveDia.onclick = () =>{
+    loja.organize();
     if(verificarInputsDia() && verificarTotalVH()){
         if(loja.procurarDiario(dataObj.toLocaleDateString()) === -1){
             let diaSave;

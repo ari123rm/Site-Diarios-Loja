@@ -398,7 +398,10 @@ function carregarTabela(){
 
  
 }
-window.onload = carregarTabela
+window.onload = () => {
+  carregarTabela();
+  loja.organize();
+}
 
 
 

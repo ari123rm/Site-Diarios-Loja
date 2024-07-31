@@ -298,7 +298,31 @@ class Loja {
                 break;
         }
         return retorno;
-    }   
+    }
+    organize(){
+        var i, j, temp;
+        var swapped;
+        for (i = 0; i < this.diario.length - 1; i++) 
+        {
+            swapped = false;
+            for (j = 0; j < this.diario.length - i - 1; j++) 
+            {
+                if (this.diario[j].dia.valueOf() > this.diario[j + 1].dia.valueOf()) 
+                {
+                    // Swap arr[j] and arr[j+1]
+                    temp = this.diario[j];
+                    this.diario[j] = this.diario[j + 1];
+                    this.diario[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // IF no two elements were 
+            // swapped by inner loop, then break
+            if (swapped == false)
+            break;
+        }
+    } 
 }
 
 //Adicionando a função .getWeek() na classe Date

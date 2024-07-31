@@ -13,6 +13,12 @@ app.use('/css', express.static(path.join(__dirname, './public/css')));
 // Servir arquivos estáticos da pasta 'public/js' para JavaScript
 app.use('/js', express.static(path.join(__dirname, './public/js')));
 
+// Servir arquivos estáticos das subpastas de 'public/imagens' para imagens
+const imagesPath = path.join(__dirname, './public/imagens');
+fs.readdirSync(imagesPath).forEach(folder => {
+    app.use(`/imagens/${folder}`, express.static(path.join(imagesPath, folder)));
+});
+
 // Rota para enviar o arquivo HTML
 app.get('/', (req, res) => {
     const filePath = path.join(__dirname, 'loja.html');
