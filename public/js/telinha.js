@@ -271,25 +271,29 @@ function addHtmlDespesas(){
     dinheiroPixBlur();
     inputBlurMoney(valorDespesa,despesaTotalText);
 }
+function removerHtmlDespesas(index){
+    console.log(index);
+    const selecionado = document.querySelectorAll('#despesas li')[index + 2];
+    const inputSelecionado = document.querySelectorAll("#despesas li")[index + 2].querySelectorAll("input");
+    inputSelecionado.forEach((input) =>{
+        input.value = "";
+    })
+    if (selecionado.parentNode) {
+        selecionado.parentNode.removeChild(selecionado);    
+        
+        
+        
+        
+        removerDespesaBuild();
+        somaTotalInput(valorDespesa,despesaTotalText);
+    }
+
+}
 function removerDespesaBuild(){
     let butaoRemoveDespesa = document.querySelectorAll(".remove-despesa");
         butaoRemoveDespesa.forEach((element,index) => {
             element.onclick = () => {
-                const selecionado = document.querySelectorAll('#despesas li')[index + 2];
-                const inputSelecionado = document.querySelectorAll("#despesas li")[index + 2].querySelectorAll("input");
-                inputSelecionado.forEach((input) =>{
-                    input.value = "";
-                })
-                if (selecionado.parentNode) {
-                    selecionado.parentNode.removeChild(selecionado);    
-                    
-                    
-                    
-                    
-                    removerDespesaBuild();
-                    somaTotalInput(valorDespesa,despesaTotalText);
-                }
-                
+                removerHtmlDespesas(index);
             }
         })
 }
@@ -343,30 +347,70 @@ function addHtmlHorario(){
     removerHorarioBuild();
     inputBlurMoney(horarioVendas,horarioTotalText);
 }
+function removerHtmlHorario(index){
+    
+    const selecionado = document.querySelectorAll('#horarios tr')[index + 2];
+    
+    const inputSelecionado = selecionado.querySelectorAll("input");
+    inputSelecionado.forEach((input) =>{
+        input.value = "";
+        
+    })
+    somaTotalInput(horarioVendas,horarioTotalText);
+    if (selecionado.parentNode) {
+        selecionado.parentNode.removeChild(selecionado);  
+        
+    }
+    removerHorarioBuild();
+
+}
 function removerHorarioBuild(){
     let butaoRemoveHorario = document.querySelectorAll(".remove-horario");
         butaoRemoveHorario.forEach((element,index) => {
             element.onclick = () => {
-                const selecionado = document.querySelectorAll('#horarios tr')[index + 2];
-                const inputSelecionado = document.querySelectorAll('#horarios tr')[index + 2].querySelectorAll("input");
-                inputSelecionado.forEach((input) =>{
-                    input.value = "";
-                    
-                })
-                somaTotalInput(horarioVendas,horarioTotalText);
-                if (selecionado.parentNode) {
-                    selecionado.parentNode.removeChild(selecionado);  
-                    
-                    
-                    
-                }
-                removerHorarioBuild();
-               
+               removerHtmlHorario(index);
             }
         })
 }
 butaoAddHorario.onclick = addHtmlHorario;
 
+
+//Resetar a tela do dia
+function resetDia(){
+    horaEntrada.value = '';
+    horaSaida.value   = '';
+
+    caixaInicial.value = '';
+    caixaFinal.value  = '';
+
+    vendasInput[0].value  =  '' ;
+    vendasInput[1].value = '';
+    vendasInput[2].value  = '';
+    vendasInput[3].value = '';
+           
+
+    tipoDespesa.forEach((element,index) => {
+        tipoDespesa[index].value = '';
+        dinheiroPix[index].value = '';
+        valorDespesa[index].value ='';
+        if(index > 0)removerHtmlDespesas(0);
+    })
+    tipoDespesa = document.querySelectorAll(".tipo-despesa");
+    dinheiroPix = document.querySelectorAll(".dinheiroPix")
+    valorDespesa = document.querySelectorAll(".despesas-money");
+
+    horarioTurno.forEach((element,index) => {
+        horarioTurno[index].value = '';
+        horarioFuncionario[index].value = '';
+        horarioQuantidadeVendas[index].value ='';
+        horarioVendas[index].value ='';
+        if(index > 0)removerHtmlHorario(0);
+    });
+    horarioTurno = document.querySelectorAll(".turno-horarios");
+    horarioFuncionario = document.querySelectorAll(".funcionario-horarios");
+    horarioQuantidadeVendas = document.querySelectorAll(".quantidade-vendas-horarios");
+    horarioVendas = document.querySelectorAll(".horario-vendas-input");
+}
 //Função para mudar de data
 function atualizaDia(){
     //Atualiza dataObj
@@ -377,6 +421,7 @@ function atualizaDia(){
     }
     //Verifica se a data já foi colocada no diario
     if(loja.procurarDiario(dataObj.toLocaleDateString()) != -1){
+        resetDia();
         
         horaEntrada.value = loja.procurarDiario(dataObj.toLocaleDateString()).horarioEntrada;
         horaSaida.value  = loja.procurarDiario(dataObj.toLocaleDateString()).horarioSaida;
@@ -394,12 +439,10 @@ function atualizaDia(){
             if(index > 0 && tipoDespesa.length == index)addHtmlDespesas();
             tipoDespesa[index].value = element.motivo;
             dinheiroPix[index].value = element.dinheiroPix;
-            
             valorDespesa[index].value = (element.valor*100).toFixed(0);
-        })
+        });
         
         loja.procurarDiario(dataObj.toLocaleDateString()).turnos.forEach((element,index) => {
-            
             if(index > 0 && horarioTurno.length == index)addHtmlHorario();
             horarioTurno[index].value = element.periodo;
             horarioFuncionario[index].value = element.nome;
@@ -416,29 +459,7 @@ function atualizaDia(){
         
 
     }else{
-        horaEntrada.value = '';
-        horaSaida.value   = '';
-
-        caixaInicial.value = '';
-        caixaFinal.value  = '';
-
-        vendasInput[0].value  =  '' ;
-        vendasInput[1].value = '';
-        vendasInput[2].value  = '';
-        vendasInput[3].value = '';
-               
-
-        tipoDespesa.forEach((element,index) => {
-            tipoDespesa[index].value = '';
-            dinheiroPix[index].value = '';
-            valorDespesa[index].value ='';
-        })
-        horarioTurno.forEach((element,index) => {
-            horarioTurno[index].value = '';
-            horarioFuncionario[index].value = '';
-            horarioQuantidadeVendas[index].value ='';
-            horarioVendas[index].value ='';
-        })
+       resetDia();
         
     }
     //Atualiza data

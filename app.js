@@ -24,7 +24,7 @@ app.post('/diarios', (req, res) => {
     const newUser = req.body; // assume que os dados do usuário são enviados no corpo da solicitação
 
     // Lê o arquivo JSON atual
-    fs.readFile('./axeBamba.json', (err, data) => {
+    fs.readFile('./loja.json', (err, data) => {
         if (err) {
             console.error('Erro ao ler o arquivo dos diarios:', err);
             res.status(500).send('Erro ao ler o arquivo de diarios.');
@@ -37,7 +37,7 @@ app.post('/diarios', (req, res) => {
         users.push(newUser);
 
         // Escreve os dados atualizados no arquivo JSON
-        fs.writeFile('./axeBamba.json', JSON.stringify(users, null, 4), (err) => {
+        fs.writeFile('./loja.json', JSON.stringify(users, null, 4), (err) => {
             if (err) {
                 console.error('Erro ao escrever no arquivo de diarios:', err);
                 res.status(500).send('Erro ao escrever no arquivo de diarios.');
@@ -56,7 +56,7 @@ app.post('/api/updateDiario', (req, res) => {
 
 // Rota para obter todos os usuários
 app.get('/diarios', (req, res) => {
-    fs.readFile('./axeBamba.json', (err, data) => {
+    fs.readFile('./loja.json', (err, data) => {
         if (err) {
             console.error('Erro ao ler o arquivo de diarios:', err);
             res.status(500).send('Erro ao ler o arquivo de diarios.');
@@ -89,7 +89,7 @@ function ler_json() {
 // Função para escrever no arquivo JSON
 function escrever_json(usuarioS) {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./axeBamba.json', JSON.stringify(usuarioS, null, 4), (err) => {
+        fs.writeFile('./loja.json', JSON.stringify(usuarioS, null, 4), (err) => {
             if (err) {
                 console.error('Erro ao escrever no arquivo de usuários:', err);
                 reject(err);
