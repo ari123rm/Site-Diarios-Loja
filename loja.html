@@ -6,6 +6,7 @@
     <title>Loja</title>
     <link rel="shortcut icon" href="/imagens/favicon/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/print.css" media="print">
     <script src = "/js/chart.js"></script>
 </head>
 <body >
@@ -14,6 +15,7 @@
             <ul type= "none">
                 <li><h1>Loja</h1></li>
                 <li><label for="selecionarCalendario">Diario: </label><input type="date" name="selecionarCalendario" id="calendario-input"><button id="butao-dia">Abrir Diario</button></li>
+                <li><input type="month" name="Mês-Impressao" id="mesImpressao"><button id ="printButton" onclick = "window.print()">Imprimir diario</button></li>
             </ul>
         </header>
         <div id = "seletor-graficos">
@@ -185,7 +187,437 @@
         
         <button type="button" id = "save-dia">Salvar Dia</button>
     </div>
-    
+    <div id = "impressao">
+        <ul type = "none" id = "diarios-print">
+            <li>
+                <ul type = "none">
+                    <li><h2>Dia: 00/00/0000</h2></li>
+                    <li><h3>Horários</h3>
+                        <table>
+                        <tr>
+                            <th>Horário Inicio: </th>
+                            <td>00:00</td>
+                        </tr>
+                        <tr>
+                            <th>Horário Saída: </th>
+                            <td>00:00</td>
+                        </tr>
+                    </table></li>
+                    <li><h3>Caixa:</h3>
+                        <table>
+                        <tr>
+                            <th>Caixa Inicial: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>Caixa Final: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Vendas:</h3>
+                        <table>
+                        <tr>
+                            <td>Dinheiro: </td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>PIX:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Débito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Crédito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL:</th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Despesas:</h3>
+                        <table>
+                            <tr><th>Motivo</th><th>Método</th><th>Valor</th></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                    <li>
+                        <h3>Turnos:</h3>
+                        <table>
+                            <tr><th>Funcionário</th><th>Turno</th><th>N°</th><th>Valor</th></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul type = "none">
+                    <li><h2>Dia: 00/00/0000</h2></li>
+                    <li><h3>Horários</h3>
+                        <table>
+                        <tr>
+                            <th>Horário Inicio: </th>
+                            <td>00:00</td>
+                        </tr>
+                        <tr>
+                            <th>Horário Saída: </th>
+                            <td>00:00</td>
+                        </tr>
+                    </table></li>
+                    <li><h3>Caixa:</h3>
+                        <table>
+                        <tr>
+                            <th>Caixa Inicial: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>Caixa Final: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Vendas:</h3>
+                        <table>
+                        <tr>
+                            <td>Dinheiro: </td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>PIX:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Débito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Crédito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL:</th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Despesas:</h3>
+                        <table>
+                            <tr><th>Motivo</th><th>Método</th><th>Valor</th></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                    <li>
+                        <h3>Turnos:</h3>
+                        <table>
+                            <tr><th>Funcionário</th><th>Turno</th><th>N°</th><th>Valor</th></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul type = "none">
+                    <li><h2>Dia: 00/00/0000</h2></li>
+                    <li><h3>Horários</h3>
+                        <table>
+                        <tr>
+                            <th>Horário Inicio: </th>
+                            <td>00:00</td>
+                        </tr>
+                        <tr>
+                            <th>Horário Saída: </th>
+                            <td>00:00</td>
+                        </tr>
+                    </table></li>
+                    <li><h3>Caixa:</h3>
+                        <table>
+                        <tr>
+                            <th>Caixa Inicial: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>Caixa Final: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Vendas:</h3>
+                        <table>
+                        <tr>
+                            <td>Dinheiro: </td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>PIX:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Débito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Crédito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL:</th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Despesas:</h3>
+                        <table>
+                            <tr><th>Motivo</th><th>Método</th><th>Valor</th></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                    <li>
+                        <h3>Turnos:</h3>
+                        <table>
+                            <tr><th>Funcionário</th><th>Turno</th><th>N°</th><th>Valor</th></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul type = "none">
+                    <li><h2>Dia: 00/00/0000</h2></li>
+                    <li><h3>Horários</h3>
+                        <table>
+                        <tr>
+                            <th>Horário Inicio: </th>
+                            <td>00:00</td>
+                        </tr>
+                        <tr>
+                            <th>Horário Saída: </th>
+                            <td>00:00</td>
+                        </tr>
+                    </table></li>
+                    <li><h3>Caixa:</h3>
+                        <table>
+                        <tr>
+                            <th>Caixa Inicial: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>Caixa Final: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Vendas:</h3>
+                        <table>
+                        <tr>
+                            <td>Dinheiro: </td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>PIX:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Débito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Crédito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL:</th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Despesas:</h3>
+                        <table>
+                            <tr><th>Motivo</th><th>Método</th><th>Valor</th></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                    <li>
+                        <h3>Turnos:</h3>
+                        <table>
+                            <tr><th>Funcionário</th><th>Turno</th><th>N°</th><th>Valor</th></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul type = "none">
+                    <li><h2>Dia: 00/00/0000</h2></li>
+                    <li><h3>Horários</h3>
+                        <table>
+                        <tr>
+                            <th>Horário Inicio: </th>
+                            <td>00:00</td>
+                        </tr>
+                        <tr>
+                            <th>Horário Saída: </th>
+                            <td>00:00</td>
+                        </tr>
+                    </table></li>
+                    <li><h3>Caixa:</h3>
+                        <table>
+                        <tr>
+                            <th>Caixa Inicial: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>Caixa Final: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Vendas:</h3>
+                        <table>
+                        <tr>
+                            <td>Dinheiro: </td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>PIX:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Débito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Crédito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL:</th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Despesas:</h3>
+                        <table>
+                            <tr><th>Motivo</th><th>Método</th><th>Valor</th></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                    <li>
+                        <h3>Turnos:</h3>
+                        <table>
+                            <tr><th>Funcionário</th><th>Turno</th><th>N°</th><th>Valor</th></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul type = "none">
+                    <li><h2>Dia: 00/00/0000</h2></li>
+                    <li><h3>Horários</h3>
+                        <table>
+                        <tr>
+                            <th>Horário Inicio: </th>
+                            <td>00:00</td>
+                        </tr>
+                        <tr>
+                            <th>Horário Saída: </th>
+                            <td>00:00</td>
+                        </tr>
+                    </table></li>
+                    <li><h3>Caixa:</h3>
+                        <table>
+                        <tr>
+                            <th>Caixa Inicial: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>Caixa Final: </th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Vendas:</h3>
+                        <table>
+                        <tr>
+                            <td>Dinheiro: </td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>PIX:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Débito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <td>Crédito:</td>
+                            <td>R$ 00,00</td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL:</th>
+                            <td>R$ 00,00</td>
+                        </tr>
+                    </table></li>
+                    <li>
+                        <h3>Despesas:</h3>
+                        <table>
+                            <tr><th>Motivo</th><th>Método</th><th>Valor</th></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+                            <tr><td>Motivo</td><td>Método</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                    <li>
+                        <h3>Turnos:</h3>
+                        <table>
+                            <tr><th>Funcionário</th><th>Turno</th><th>N°</th><th>Valor</th></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+                            <tr><td>Funcionário</td><td>Turno</td><td>0</td><td>R$ 00,00</td></tr>
+
+                            <tr><th>TOTAL:</th><td></td><td></td><td>R$ 00,00</td></tr>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+            
+        </ul>
+    </div>
 </body>
 
 <script src = "/js/classes.js"> </script>
@@ -194,5 +626,14 @@
 
 <script src = "/js/graficos.js"> </script>
 
+<script src="/js/impressao.js"></script>
+
 
 </html>
+<!--
+
+
+
+
+
+-->

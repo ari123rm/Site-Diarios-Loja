@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+#tela-inicial,#tela-dia{
+    display:none;
+}
+#impressao{
+    display:block;
+    font-family: 'Courier New', Courier, monospace;
+}
+h1{
+    text-align: center;
+}
+ul{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+ul > li{
+    width: 45vw;
+    padding-right: 1.25vw;
+    padding-left: 1.25vw;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    height: 100vh;
+}
+ul li ul li{
+    border: 0;
+    width: 95%;
+    padding-top: 10px;
+    height: auto;
+}
+table{
+    
+    border-collapse: collapse;
+    border: 1px solid black;
+    table-layout:auto;
+    width: 100%;  
+}
+td,th{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+th{
+    font-size: 16px;
+
+}

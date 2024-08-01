@@ -267,12 +267,6 @@
                     "nome": "Bianca",
                     "quantidadeVendas": 16,
                     "valor": 500.5
-                },
-                {
-                    "periodo": "",
-                    "nome": "",
-                    "quantidadeVendas": null,
-                    "valor": null
                 }
             ]
         },
@@ -309,18 +303,6 @@
                     "nome": "João",
                     "quantidadeVendas": 9,
                     "valor": 483
-                },
-                {
-                    "periodo": "",
-                    "nome": "",
-                    "quantidadeVendas": null,
-                    "valor": null
-                },
-                {
-                    "periodo": "",
-                    "nome": "",
-                    "quantidadeVendas": null,
-                    "valor": null
                 }
             ]
         },
@@ -369,24 +351,6 @@
                     "nome": "Ana Vitória",
                     "quantidadeVendas": 1,
                     "valor": 55
-                },
-                {
-                    "periodo": "",
-                    "nome": "",
-                    "quantidadeVendas": null,
-                    "valor": null
-                },
-                {
-                    "periodo": "",
-                    "nome": "",
-                    "quantidadeVendas": null,
-                    "valor": null
-                },
-                {
-                    "periodo": "",
-                    "nome": "",
-                    "quantidadeVendas": null,
-                    "valor": null
                 }
             ]
         },
@@ -873,12 +837,6 @@
                     "nome": "Bianca",
                     "quantidadeVendas": 7,
                     "valor": 420
-                },
-                {
-                    "periodo": "",
-                    "nome": "",
-                    "quantidadeVendas": null,
-                    "valor": null
                 }
             ]
         }
