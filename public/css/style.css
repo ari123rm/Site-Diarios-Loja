@@ -70,8 +70,8 @@ body{
 #info-grafico #grafico{
     justify-self: center;
     align-self: center;
-    width: 80%;
-    
+    width: 90%;
+    height: 80%;
     display: grid;
     justify-items: center;
 }
@@ -80,9 +80,7 @@ body{
 #tela-dia{
     overflow-y:auto; 
     flex-direction: column;
-    background: #1f4037;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #e2e1e1;  /* fallback for old browsers */
     position:fixed;
     display: none;
     width: 75%;
@@ -115,7 +113,7 @@ body{
     width: 100%;
     display: inline-flex;
     justify-content: space-around;
-    background-color: #ffffff50;
+    background-color: lightgrey;
     height: 12.5%;
     align-items: center;
     border-bottom: 1px solid black;
@@ -151,7 +149,7 @@ body{
 #tela-dia #financias-dia #caixa table tr:first-child{
 
     padding-bottom: 5px;
-    background-color: #48ff8e50;
+    background-color: #35635550;
 }
 #tela-dia #financias-dia #caixa table tr:last-child{
     background-color: #ff6e3550;
@@ -192,7 +190,7 @@ body{
 }
 
 #tela-dia #financias-dia #vendas{
-    background-color: #daf2d090;
+    background-color: #35635590;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     width: max-content;
@@ -254,7 +252,7 @@ body{
 }
 
 #tela-dia #financias-dia #horarios{
-    background-color: #ffffff70;
+    background-color: lightgrey;
     border: 1px solid black;
     width: max-content;
     padding: 10px;
