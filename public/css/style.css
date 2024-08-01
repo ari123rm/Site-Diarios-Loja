@@ -16,28 +16,41 @@ body{
 .real{
     text-align: right;
 }
-
+#tela-inicial{
+    height: 90vh;
+    background-color: #f4fdf0;
+}
 #tela-inicial header{
     display: flex;
     background-color: lightgrey;
     padding: 10px;
+    height: 10%;
+}
+#tela-inicial header #butao-dia{
+    color: white;
+    background-color: #356355;
+    padding: 5px;
+    cursor: pointer;
 }
 #tela-inicial header ul{
     width: 100%;
+    height: auto;
     display: inline-flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: nowrap;
 }
 #tela-inicial header label{
     font-weight: bold ;
 }
 
 #seletor-graficos{
-    background-color: #daf2d0;
+    background-color: #daf2d2;
     display: flex;
     justify-content: space-around;
     flex-wrap: nowrap;
     padding: 10px;
+    height: 5%;
 }
 #seletor-graficos ul li:first-child{
     text-align: center;
@@ -49,16 +62,17 @@ body{
 #info-grafico{
     display: grid;
     width: 100%;
-    height: 100%;
+    height: 75%;
     background-color: #f4fdf0;
+    padding-top: 1%;
 }
 
 #info-grafico #grafico{
     justify-self: center;
     align-self: center;
     width: 80%;
+    
     display: grid;
-    height: 70%;
     justify-items: center;
 }
 
@@ -66,8 +80,10 @@ body{
 #tela-dia{
     overflow-y:auto; 
     flex-direction: column;
-    background-color: #f5d7e6b7;
-    position: absolute;
+    background: #1f4037;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position:fixed;
     display: none;
     width: 75%;
     height: 75%;
@@ -99,13 +115,18 @@ body{
     width: 100%;
     display: inline-flex;
     justify-content: space-around;
-    background-color: #a6c9ec;
+    background-color: #ffffff50;
     height: 12.5%;
     align-items: center;
+    border-bottom: 1px solid black;
     
 }
 #tela-dia #titulo-dia label{
     font-weight: bold;
+}
+#tela-dia #titulo-dia .feriado{
+    text-decoration:underline;
+    padding: 5px;
 }
 #tela-dia #financias-dia{
     display: flex;
@@ -114,22 +135,31 @@ body{
     justify-content: space-between;
 }
 #tela-dia #financias-dia div{
-    margin: 5px 0;
+    margin: 5px 0 0 0;
 }
+
+
 #tela-dia #financias-dia #caixa{
     width: 100%;
     padding-left: 10px;
 }
+#tela-dia #financias-dia #caixa table{
+    table-layout:auto;
+    border-collapse: collapse;
+}
 
 #tela-dia #financias-dia #caixa table tr:first-child{
+
     padding-bottom: 5px;
-    background-color: lightgreen;
+    background-color: #48ff8e50;
 }
 #tela-dia #financias-dia #caixa table tr:last-child{
-    background-color: lightsalmon;
+    background-color: #ff6e3550;
 }
 
 #tela-dia #financias-dia #caixa table tr td{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     margin:0;
     padding: 3px;
     
@@ -138,9 +168,8 @@ body{
     font-family: sans-serif;
     font-size: 32px;
     text-align: center;
-    color: white;
-    -webkit-text-stroke-width: 1px; /* largura da borda */
-    -webkit-text-stroke-color: #000;
+    color: black;
+    font-weight: bold;
 }
 #tela-dia #financias-dia #caixa table tr td:last-child{
     font-weight: bold;
@@ -153,6 +182,7 @@ body{
     padding: 3px;
 }
 #tela-dia #financias-dia #despesas-vendas{
+    padding-top: 5px;
     display:flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -162,9 +192,11 @@ body{
 }
 
 #tela-dia #financias-dia #vendas{
-    background-color:#daf2d0 ;
+    background-color: #daf2d090;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     width: max-content;
-    padding: 10px;
+    padding: 10px 5%;
     text-align: center;
 }
 #tela-dia #financias-dia #vendas li{
@@ -187,9 +219,11 @@ body{
     text-align: right;
 }
 #tela-dia #financias-dia #despesas{
-    background-color: #f5c6ab;
+    background-color: #c5947d90;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     width: max-content;
-    padding: 10px;
+    padding: 10px 5%;
 }
 #tela-dia #financias-dia #despesas li{
     text-align: right;
@@ -215,10 +249,13 @@ body{
 }
 #tela-dia #financias-dia #despesas button{
     padding: 3px 5px;
+    cursor: pointer;
+
 }
 
 #tela-dia #financias-dia #horarios{
-    background-color: #dae9f8;
+    background-color: #ffffff70;
+    border: 1px solid black;
     width: max-content;
     padding: 10px;
 }
@@ -228,12 +265,15 @@ body{
 
 }
 #tela-dia #financias-dia #horarios table{
+    
     width: 100%;
 }
 #tela-dia #financias-dia #horarios table tr{
+    
     width: 80%;
 }
 #tela-dia #financias-dia #horarios table tr td{
+    
     text-align: center;
     
 }
@@ -248,6 +288,7 @@ body{
 }
 #tela-dia #financias-dia #horarios button{
     padding: 3px 5px;
+    cursor: pointer;
 
 }
 
@@ -255,8 +296,26 @@ body{
     width: 100%;
     padding: 10px;
     align-self:baseline;
+    font-size: 32px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: auto;
+    font-weight: bold;
+    cursor:pointer;
+    color: white;
+    -webkit-text-stroke: 1px black;
+    background-color: #4db397;
 }
-
+footer{
+    height: 10vh;
+    text-align: center;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-text-stroke: 1px black;
+}
 #impressao{
     display:none;
 }

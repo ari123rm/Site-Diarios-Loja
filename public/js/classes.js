@@ -221,6 +221,16 @@ class Loja {
         this.diarios = diarinho;
     }
     addDiario(diario){
+        diario.turnos.forEach((turno,index)=>{
+            if(turno.periodo == "" || turno.nome == "" || turno.quantidadeVendas == null || turno.valor == null){
+                diario.turnos.splice(index,1);
+            }
+        })
+        diario.despesas.forEach((desp,index)=>{
+            if(desp.motivo == "" || desp.valor == null){
+                diario.despesas.splice(index,1);
+            }
+        })
         this.diarios.push(diario);
     }
     procurarDiario(data){
@@ -300,6 +310,19 @@ class Loja {
         return retorno;
     }
     organize(){
+        this.diarios.forEach(diario =>{
+            diario.turnos.forEach((turno,index)=>{
+                if(turno.periodo == "" || turno.nome == "" || turno.quantidadeVendas == null || turno.valor == null){
+                    diario.turnos.splice(index,1);
+                }
+            })
+            diario.despesas.forEach((desp,index)=>{
+                if(desp.motivo == "" || desp.valor == null){
+                    diario.despesas.splice(index,1);
+                }
+            })
+        });
+        
         var i, j, temp;
         var swapped;
         for (i = 0; i < this.diario.length - 1; i++) 

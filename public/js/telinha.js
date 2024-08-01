@@ -159,6 +159,8 @@ feriadoClass.forEach((element) => {
     })
 
     element.innerText = verificadorFeriado != -1? nomeFeriados[verificadorFeriado] : "Não é feriado";
+
+    element.style.backgroundColor = verificadorFeriado != -1? '#00FF0050' : '#FF000050';
     
 })
 
@@ -169,6 +171,7 @@ const butaoDia = document.querySelector("#butao-dia");
 butaoDia.onclick = () => {
     if(telaDia.style.display == "flex"){
         telaDia.style.display = "none";
+        atualizaDia();
     }else{
         telaDia.style.display = "flex";
     }
@@ -272,7 +275,7 @@ function addHtmlDespesas(){
     inputBlurMoney(valorDespesa,despesaTotalText);
 }
 function removerHtmlDespesas(index){
-    console.log(index);
+   
     const selecionado = document.querySelectorAll('#despesas li')[index + 2];
     const inputSelecionado = document.querySelectorAll("#despesas li")[index + 2].querySelectorAll("input");
     inputSelecionado.forEach((input) =>{
@@ -354,7 +357,6 @@ function removerHtmlHorario(index){
     const inputSelecionado = selecionado.querySelectorAll("input");
     inputSelecionado.forEach((input) =>{
         input.value = "";
-        
     })
     somaTotalInput(horarioVendas,horarioTotalText);
     if (selecionado.parentNode) {
@@ -377,6 +379,14 @@ butaoAddHorario.onclick = addHtmlHorario;
 
 //Resetar a tela do dia
 function resetDia(){
+    tipoDespesa = document.querySelectorAll(".tipo-despesa");
+    dinheiroPix = document.querySelectorAll(".dinheiroPix")
+    valorDespesa = document.querySelectorAll(".despesas-money");
+    horarioTurno = document.querySelectorAll(".turno-horarios");
+    horarioFuncionario = document.querySelectorAll(".funcionario-horarios");
+    horarioQuantidadeVendas = document.querySelectorAll(".quantidade-vendas-horarios");
+    horarioVendas = document.querySelectorAll(".horario-vendas-input");
+
     horaEntrada.value = '';
     horaSaida.value   = '';
 
@@ -394,7 +404,8 @@ function resetDia(){
         dinheiroPix[index].value = '';
         valorDespesa[index].value ='';
         if(index > 0)removerHtmlDespesas(0);
-    })
+    });
+    dinheiroPix[0].value = "nada";
     tipoDespesa = document.querySelectorAll(".tipo-despesa");
     dinheiroPix = document.querySelectorAll(".dinheiroPix")
     valorDespesa = document.querySelectorAll(".despesas-money");
@@ -422,7 +433,6 @@ function atualizaDia(){
     //Verifica se a data já foi colocada no diario
     if(loja.procurarDiario(dataObj.toLocaleDateString()) != -1){
         resetDia();
-        
         horaEntrada.value = loja.procurarDiario(dataObj.toLocaleDateString()).horarioEntrada;
         horaSaida.value  = loja.procurarDiario(dataObj.toLocaleDateString()).horarioSaida;
 
@@ -460,7 +470,6 @@ function atualizaDia(){
 
     }else{
        resetDia();
-        
     }
     //Atualiza data
     dataText.forEach((element) => {
@@ -479,6 +488,7 @@ function atualizaDia(){
             }
         })
         element.innerText = verificadorFeriado != -1? nomeFeriados[verificadorFeriado] : "Não é feriado";
+        element.style.backgroundColor = verificadorFeriado != -1? '#0000FF50' : '#FF000050';
     })
     //Atualiza Total de cada categoria
     somaTotalInput(vendasInput,vendasTotalText);
@@ -498,7 +508,11 @@ function verificarInputsDia(){
     const inputsDia = document.querySelectorAll("#tela-dia input");
     inputsDia.forEach((element)=>{
         if(element.value == '')verificador = false;
-    })
+    });
+    const selectDia = document.querySelectorAll("#tela-dia select");
+    selectDia.forEach((element)=>{
+        if(element.value == '')verificador = false;
+    });
     return verificador;
 }
 function verificarTotalVH(){
@@ -529,9 +543,9 @@ buttonSaveDia.onclick = () =>{
             horarioTurno.forEach((element,index) =>{
                 diaSave.addTurno(new Turno(element.value,horarioFuncionario[index].value,parseInt(horarioQuantidadeVendas[index].value),parseFloat(horarioVendas[index].value)))
             })
-    
+            
             loja.addDiario(diaSave);
-            console.log(JSON.stringify(diaSave))
+            
             escrever__json();
             alert(`Dia ${loja.procurarDiario(diaSave.dia.toLocaleDateString()).dia.toLocaleDateString()} foi salvo`);
     
@@ -553,7 +567,7 @@ buttonSaveDia.onclick = () =>{
                 diaAtualizado.addTurno(new Turno(element.value,horarioFuncionario[index].value,parseInt(horarioQuantidadeVendas[index].value),parseFloat(horarioVendas[index].value)))
             })
             loja.diario[loja.idDiario(diaAtualizado.dia.toLocaleDateString())] = diaAtualizado;
-            console.log(JSON.stringify(diaAtualizado))
+            
             escrever__json();
             alert(`Dia ${loja.procurarDiario(diaAtualizado.dia.toLocaleDateString()).dia.toLocaleDateString()} foi Alterado`);
             
@@ -565,7 +579,7 @@ buttonSaveDia.onclick = () =>{
     }
 
    
-    console.log(loja);
+    
 }
 
 

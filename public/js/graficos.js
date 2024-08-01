@@ -154,7 +154,7 @@ function buildDataSets(key,data,ano){
           });
         }
       } )
-      console.log(v)
+      
       dataSets.push(new DataSet("Vendas R$",'',v,['green']));
       dataSets.push(new DataSet("Despesas R$",'',d,['red']));
       break;
@@ -393,7 +393,6 @@ function carregarTabela(){
     data: data(dados),
     options: option(tipoGrafico.value)
   }
-  console.log(cfg)
   grafico = new Chart(lucroDespesa, cfg );
 
  

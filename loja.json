@@ -7,13 +7,7 @@
                 "debito": 0,
                 "credito": 104
             },
-            "despesas": [
-                {
-                    "motivo": "nada",
-                    "dinheiroPix": "",
-                    "valor": 0
-                }
-            ],
+            "despesas": [],
             "caixa": {
                 "inicial": 440,
                 "final": 657
@@ -361,13 +355,7 @@
                 "debito": 61,
                 "credito": 224
             },
-            "despesas": [
-                {
-                    "motivo": "nada",
-                    "dinheiroPix": "",
-                    "valor": 0
-                }
-            ],
+            "despesas": [],
             "caixa": {
                 "inicial": 323.15,
                 "final": 916.15
@@ -837,6 +825,491 @@
                     "nome": "Bianca",
                     "quantidadeVendas": 7,
                     "valor": 420
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 145,
+                "pix": 409,
+                "debito": 608,
+                "credito": 150
+            },
+            "despesas": [
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 150
+                }
+            ],
+            "caixa": {
+                "inicial": 355,
+                "final": 350
+            },
+            "dia": "2024-07-20T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Completo",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 11,
+                    "valor": 470
+                },
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 7,
+                    "valor": 308
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 7,
+                    "valor": 534
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 30,
+                "pix": 726,
+                "debito": 108,
+                "credito": 250
+            },
+            "despesas": [
+                {
+                    "motivo": "nada",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 0
+                }
+            ],
+            "caixa": {
+                "inicial": 350,
+                "final": 380
+            },
+            "dia": "2024-07-21T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Completo",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 6,
+                    "valor": 604
+                },
+                {
+                    "periodo": "Completo",
+                    "nome": "Lucas",
+                    "quantidadeVendas": 6,
+                    "valor": 510
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 125,
+                "pix": 383,
+                "debito": 142,
+                "credito": 213
+            },
+            "despesas": [
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 300
+                }
+            ],
+            "caixa": {
+                "inicial": 380,
+                "final": 205
+            },
+            "dia": "2024-07-22T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 4,
+                    "valor": 272
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 4,
+                    "valor": 152
+                },
+                {
+                    "periodo": "Completo",
+                    "nome": "Lucas",
+                    "quantidadeVendas": 8,
+                    "valor": 439
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 282,
+                "pix": 604,
+                "debito": 402,
+                "credito": 326
+            },
+            "despesas": [
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 300
+                }
+            ],
+            "caixa": {
+                "inicial": 205,
+                "final": 232
+            },
+            "dia": "2024-07-23T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 7,
+                    "valor": 395
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 22,
+                    "valor": 961
+                },
+                {
+                    "periodo": "Completo",
+                    "nome": "Lucas",
+                    "quantidadeVendas": 6,
+                    "valor": 258
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 50,
+                "pix": 555,
+                "debito": 226,
+                "credito": 119
+            },
+            "despesas": [
+                {
+                    "motivo": "nada",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 0
+                }
+            ],
+            "caixa": {
+                "inicial": 232,
+                "final": 282
+            },
+            "dia": "2024-07-24T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 5,
+                    "valor": 337
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 1,
+                    "valor": 53
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "João",
+                    "quantidadeVendas": 4,
+                    "valor": 128
+                },
+                {
+                    "periodo": "Matutino",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 8,
+                    "valor": 432
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 80,
+                "pix": 93,
+                "debito": 178,
+                "credito": 25
+            },
+            "despesas": [
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 160
+                }
+            ],
+            "caixa": {
+                "inicial": 282,
+                "final": 202
+            },
+            "dia": "2024-07-25T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Matutino",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 2,
+                    "valor": 73
+                },
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 5,
+                    "valor": 223
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 0,
+                    "valor": 0
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "João",
+                    "quantidadeVendas": 1,
+                    "valor": 80
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 355,
+                "pix": 257,
+                "debito": 266,
+                "credito": 618
+            },
+            "despesas": [
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 250
+                }
+            ],
+            "caixa": {
+                "inicial": 202,
+                "final": 307
+            },
+            "dia": "2024-07-26T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Completo",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 5,
+                    "valor": 346
+                },
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 9,
+                    "valor": 628
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 11,
+                    "valor": 522
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 206,
+                "pix": 529,
+                "debito": 275,
+                "credito": 435
+            },
+            "despesas": [
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 300
+                },
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "pix",
+                    "valor": 10
+                }
+            ],
+            "caixa": {
+                "inicial": 307,
+                "final": 203
+            },
+            "dia": "2024-07-27T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Completo",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 3,
+                    "valor": 352
+                },
+                {
+                    "periodo": "Completo",
+                    "nome": "João",
+                    "quantidadeVendas": 9,
+                    "valor": 643
+                },
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 0,
+                    "valor": 0
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 6,
+                    "valor": 450
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 159,
+                "pix": 485,
+                "debito": 335,
+                "credito": 288
+            },
+            "despesas": [
+                {
+                    "motivo": "Depósito",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 150
+                }
+            ],
+            "caixa": {
+                "inicial": 203,
+                "final": 212
+            },
+            "dia": "2024-07-28T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Completo",
+                    "nome": "João",
+                    "quantidadeVendas": 10,
+                    "valor": 664
+                },
+                {
+                    "periodo": "Completo",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 12,
+                    "valor": 603
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 50,
+                "pix": 482,
+                "debito": 124,
+                "credito": 80
+            },
+            "despesas": [
+                {
+                    "motivo": "nada",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 0
+                }
+            ],
+            "caixa": {
+                "inicial": 212,
+                "final": 262
+            },
+            "dia": "2024-07-29T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Matutino",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 2,
+                    "valor": 188
+                },
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 2,
+                    "valor": 179
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 4,
+                    "valor": 284
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "João",
+                    "quantidadeVendas": 2,
+                    "valor": 85
+                }
+            ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 128,
+                "pix": 118,
+                "debito": 78,
+                "credito": 98
+            },
+            "despesas": [
+                {
+                    "motivo": "nada",
+                    "dinheiroPix": "dinheiro",
+                    "valor": 0
+                }
+            ],
+            "caixa": {
+                "inicial": 262,
+                "final": 390
+            },
+            "dia": "2024-07-30T03:00:00.000Z",
+            "horarioEntrada": "10:00",
+            "horarioSaida": "19:00",
+            "turnos": [
+                {
+                    "periodo": "Matutino",
+                    "nome": "Ana Vitória",
+                    "quantidadeVendas": 0,
+                    "valor": 0
+                },
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 3,
+                    "valor": 133
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 1,
+                    "valor": 78
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "João",
+                    "quantidadeVendas": 3,
+                    "valor": 211
                 }
             ]
         }
