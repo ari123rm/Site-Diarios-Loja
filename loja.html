@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/print.css" media="print">
     <script src = "/js/chart.js"></script>
+    <script src="/js/datalabel.js"></script>
 </head>
 <body >
     <div id = "tela-inicial">
@@ -24,10 +25,12 @@
                 <option value="line">Gráfico de Linha</option>
                 <option value="pie">Gráfico de Pizza</option>
                 <option value="doughnut">Gráfico de Rosca</option>
+                <option value="scatter">Gráfico de Dispersão</option>
             </select>
             <select name="dados-grafico" id="dados-grafico">
-                <optgroup label = "Lucros">
+                <optgroup label = "Valor x Valor">
                     <option value="vendasXdespesas" selected>Vendas X Despesas</option>
+                    <option value="quantidadeXvendas">Quantidade X Vendas</option>
                 </optgroup>
                 <optgroup label = "Valores Individuais">
                     <option value="vendas">Vendas</option>
@@ -78,7 +81,6 @@
         <div id = "topo-dia" style = "display: grid; padding-bottom: 5px;">
             <button id = "sair-dia">X</button>
         </div>
-        
         <ul id = "titulo-dia" type = "none">
             <li><h2 class= "semana"></h2></li>
             <li><h2 class = "feriado"></h2></li>

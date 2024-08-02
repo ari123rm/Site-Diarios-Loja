@@ -118,6 +118,14 @@ class DataSet{
       key: key
     }
   }
+  obj(){
+    return {
+      label: this.label,
+      data: this.data,
+      backgroundColor: this.backgroundColor,
+      parsing:this.parsing
+    }
+  }
 }
 function buildDataSets(key,data,ano){
   let dataSets = [];
@@ -154,9 +162,83 @@ function buildDataSets(key,data,ano){
           });
         }
       } )
+      if(tipoGrafico.value == 'scatter'){
+        let XY = [];
+        v.forEach((element,index)=>{
+          XY.push({
+            x:d[index],
+            y:element
+          });
+        })
+        dataSets.push(new DataSet("Vendas x Despesas",['y'],XY,'yellow').obj());
+      }else{
+        dataSets.push(new DataSet("Vendas R$",'',v,['green']).obj());
+        dataSets.push(new DataSet("Despesas R$",'',d,['red']).obj());
+      }
+     
+      break;
+    case 'quantidadeXvendas':
+        let nVendas = [];
+        let funcio = [];
+      data.forEach((element) => {
+        element.turnos.forEach((turno)=>{
+          let id = -1;
+          let verificador = false;
+          funcio.forEach((label,index) =>{
+            if(label == turno.nome){
+              verificador = true
+              id = index;
+            }
+          })
+          if(turno.nome != ''){
+            if(verificador){
+              nVendas[id] += turno.quantidadeVendas;
+            }else{
+              funcio[funcio.length] = turno.nome;
+              nVendas[nVendas.length] = turno.quantidadeVendas;
+            }
+          }
+        })
+      })
+      let vendasVend = [];
+      let nom = [];
+      data.forEach((element) => {
+        element.turnos.forEach((turno)=>{
+          let id = -1;
+          let verificador = false;
+          nom.forEach((label,index) =>{
+            if(label == turno.nome){
+              verificador = true
+              id = index;
+            }
+          })
+          if(turno.nome != ''){
+            if(verificador){
+              vendasVend[id] += turno.valor;
+            }else{
+              nom[nom.length] = turno.nome
+              vendasVend[vendasVend.length] = turno.valor;
+            }
+          }
+        })
+      })
       
-      dataSets.push(new DataSet("Vendas R$",'',v,['green']));
-      dataSets.push(new DataSet("Despesas R$",'',d,['red']));
+      if(tipoGrafico.value == 'scatter'){
+        let XY = [];
+        vendasVend.forEach((element,index)=>{
+          XY.push({
+            x:nVendas[index],
+            y:element
+          });
+        })
+        dataSets.push(new DataSet("Quantidade x Vendas",['y'],XY,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
+      }else{
+        dataSets.push(new DataSet("Valor vendido em R$",[],vendasVend,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
+        dataSets.push(new DataSet("Quantidade de vendas",[], nVendas,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
+        
+      }
+
+      
       break;
     case "vendas":
       let total = [0,0,0,0];
@@ -166,7 +248,7 @@ function buildDataSets(key,data,ano){
         total[2] += element.debito;
         total[3] += element.credito;
       } )
-      dataSets.push(new DataSet("Valor em R$",[],total,['darkGreen','MidnightBlue','SaddleBrown','SlateGrey']));
+      dataSets.push(new DataSet("Valor em R$",[],total,['darkGreen','MidnightBlue','SaddleBrown','SlateGrey']).obj());
       break;
     case "despesas":
       let nomes = [];
@@ -190,8 +272,8 @@ function buildDataSets(key,data,ano){
           
         })
       })
-      console.log(nomes)
-      dataSets.push(new DataSet("Valor em R$",[],valoresDespesa,['orange','lightCoral','orangeRed','IndianRed']));
+      
+      dataSets.push(new DataSet("Valor em R$",[],valoresDespesa,['orange','lightCoral','orangeRed','IndianRed']).obj());
       break;
     case "vendedor":
       let vendasV = [];
@@ -217,7 +299,7 @@ function buildDataSets(key,data,ano){
         })
       })
       
-      dataSets.push(new DataSet("Valor vendido em R$",[],vendasV,['aqua','lightBlue','cyan','blue','darkBlue','lightCyan']));
+      dataSets.push(new DataSet("Valor vendido em R$",[],vendasV,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
       break;
     case "quantidadeVendas":
       let quantidadeV = [];
@@ -242,7 +324,7 @@ function buildDataSets(key,data,ano){
           }
         })
       })
-      dataSets.push(new DataSet("Quantidade de vendas",[],quantidadeV,['aqua','lightBlue','cyan','blue','darkBlue','lightCyan']));
+      dataSets.push(new DataSet("Quantidade de vendas",[],quantidadeV,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
       break;
     case 'depositos':
       let depo = []
@@ -251,7 +333,7 @@ function buildDataSets(key,data,ano){
           if(despesa.motivo == "Depósito" && despesa.motivo != 'nada')depo[index] = despesa.valor;
         });
       } )
-      dataSets.push(new DataSet("Depósitos R$",'',depo,['lightSalmon']));
+      dataSets.push(new DataSet("Depósitos R$",'',depo,['lightSalmon']).obj());
       break;
       break;
     case 'totalVenda':
@@ -273,7 +355,7 @@ function buildDataSets(key,data,ano){
         
       } )
       
-      dataSets.push(new DataSet("Vendas R$",'',sell,['lightGreen']));
+      dataSets.push(new DataSet("Vendas R$",'',sell,['lightGreen']).obj());
       break;
     case 'totalDespesas':
       let desp = []
@@ -291,19 +373,22 @@ function buildDataSets(key,data,ano){
         }
         
       } )
-      dataSets.push(new DataSet("Despesas R$",'',desp,['lightCoral']));
+      dataSets.push(new DataSet("Despesas R$",'',desp,['lightCoral']).obj());
       break;   
-    case 'horarioEntrada':
-      let entra = []
-      data.forEach((element,index) =>{
-        entra[index] = parseFloat(element.horarioEntrada.split(':')[0]) + parseFloat(element.horarioEntrada.split(':')[1])/100;
-      })
-      dataSets.push(new DataSet("Horario de Entrada",'',entra,['lightBlue']));
-      break;
+    
 
-    case 'horarioSaida':
-      
-      break;
+
+      //case 'horarioEntrada':
+      //  let entra = []
+      //  data.forEach((element,index) =>{
+      //    entra[index] = parseFloat(element.horarioEntrada.split(':')[0]) + parseFloat(element.horarioEntrada.split(':')[1])/100;
+      //  })
+      //  dataSets.push(new DataSet("Horario de Entrada",'',entra,['lightBlue']).obj());
+      //  break;
+//
+      //case 'horarioSaida':
+      //  
+      //  break;
     default:
 
       break;
@@ -313,7 +398,7 @@ function buildDataSets(key,data,ano){
 //Conectando as labels com dataset
 
 function data(dado){
-  let opcao = [['vendasXdespesas','totalVenda','totalDespesas','horarioEntrada','horarioSaida','depositos'],['vendas'],['despesas'],['vendedor','quantidadeVendas']];
+  let opcao = [['vendasXdespesas','totalVenda','totalDespesas','horarioEntrada','horarioSaida','depositos'],['vendas'],['despesas'],['vendedor','quantidadeVendas','quantidadeXvendas']];
   let labels = [];
   let datasets = [];
   let ano = false;
@@ -344,35 +429,227 @@ function data(dado){
   })
   return {labels: labels,datasets:buildDataSets(dadosGrafico.value,dado,ano)}
 }
-function option(tipo){
+
+
+function option(tipo,dados){
   let retorno = {};
+  let nDados;
   switch(tipo){
     case 'bar':
-    retorno.scales ={
+    retorno = {
+      scales :{
           y: {
             beginAtZero: true
           }
-    }
+      },
+      plugins: {
+
+        datalabels: {
+          anchor:'end',
+          formatter: ((value,ctx) =>{
+            nDados = ctx.chart.dataset
+            console.log(ctx)
+            if(typeof value == typeof 1 && value != 0){
+              if(dados != 'quantidadeVendas' && !(dados == 'quantidadeXvendas' && ctx.datasetIndex == 1)){
+                return value.toFixed(2);
+              }else{
+                return value;
+              }
+            }else{
+              return "";
+            }
+            
+          }),
+          color: 'white',
+          font:{
+            size: "12px",
+            weight:"bold",
+          },
+          textStrokeColor: "black",
+          textStrokeWidth: 3,
+        },
+        }
+      }
     break;
     case 'line':
       retorno = {
-        scales: {
+        scales :{
           y: {
             beginAtZero: true
           }
+      },
+      plugins: {
+        datalabels: {
+          anchor:'end',
+          align: 'end',
+          formatter: ((value,ctx) =>{
+            nDados = ctx.chart.dataset
+            if(typeof value == typeof 1 && value != 0){
+              if(dados != 'quantidadeVendas'){
+                return value.toFixed(2);
+              }else{
+                return value;
+              }
+              
+            }else{
+              return "";
+            }
+            
+          }),
+          color: 'white',
+          font:{
+            size: "12px",
+            weight:"bold",
+          },
+          textStrokeColor: "black",
+          textStrokeWidth: 3,
+        },
         }
     }
     break;
     case 'pie':
-      retorno = {
-        tooltipTemplate: '<%= value + "%" %>'
-    }
-    break;
+      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas" || dados == 'quantidadeXvendas'){
+        retorno = {
+          plugins: {
+            anchor:'end',
+            align: 'end',
+            datalabels: {
+              formatter: ( (value,ctx)=> {let sum = 0;
+                let dataArr =  ctx.chart.data.datasets[ctx.datasetIndex].data;
+                dataArr.forEach(data => {
+                    sum += data;
+                });
+                let percentage = (value*100 / sum).toFixed(2)+"%";
+                return percentage;}),
+              color: 'white',
+              font:{
+                size: "16px",
+                weight:"bold",
+              },
+              textStrokeColor: "black",
+              textStrokeWidth: 3,
+            },
+            
+            
+          }
+        };
+      }else{
+        retorno = {};
+      }
+      
+      break;
     case 'doughnut':
+      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas'){
+        retorno = {
+          plugins: {
+            anchor:'end',
+            align: 'end',
+            datalabels: {
+              formatter: ( (value,ctx)=> {let sum = 0;
+                let dataArr =  ctx.chart.data.datasets[ctx.datasetIndex].data;
+                dataArr.forEach(data => {
+                    sum += data;
+                });
+                let percentage = (value*100 / sum).toFixed(2)+"%";
+                return percentage;}),
+              color: 'white',
+              font:{
+                size: "16px",
+                weight:"bold",
+              },
+              textStrokeColor: "black",
+              textStrokeWidth: 3,
+            },
+            
+          }
+        };
+      }else{
+        retorno = {};
+      }
+      break;
+    case 'scatter':
       retorno = {
-        tooltipTemplate: '<%= value + "%" %>'
-    }
+        radius: 7,
+        hoverRadius: 10,
+        scales: {
+          x: {
+            type: 'linear',
+            position: 'bottom',
+            beginAtZero: true
+          },
+          y:{
+            type: 'linear',
+            beginAtZero: true,
+          }
+        }
+      }
+      switch(dados){
+        case 'quantidadeXvendas':
+          retorno.scales.x.title = {
+            color: 'blue',
+            text: 'Quantidade',
+            font:'arial',
+            display:true,
+          };
+          retorno.scales.y.title = {
+            color: 'green',
+            text: 'Vendas R$',
+            font: 'arial',
+            display:true,
+          };
+        case 'vendasXdespesas':
+          retorno.scales.x.title = {
+            color: 'red',
+            text: 'Despesas R$',
+            font:'arial',
+            display:true,
+          };
+          retorno.scales.y.title = {
+            color: 'green',
+            text: 'Vendas R$',
+            font: 'arial',
+            display:true,
+          };
+          break;
+        default:
+          break;
+      }
+      
+      break
+    default:
+      break;
+  }
+  return retorno;
+}
+
+function plugins(tipo,dados){
+  let retorno = [];
+  switch(tipo){
+    case 'bar':
+      retorno.push(ChartDataLabels);
     break;
+    case 'line':
+      retorno.push(ChartDataLabels);
+    break;
+    case 'pie':
+      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas'){
+        retorno.push(ChartDataLabels);
+      }else{
+
+      }
+      
+      break;
+    case 'doughnut':
+      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas'){
+        retorno.push(ChartDataLabels);
+      }else{
+
+      }
+
+    break;
+    case 'scatter':
+
+      break;
     default:
       break;
   }
@@ -380,9 +657,9 @@ function option(tipo){
 }
 
 //Função carregarTabela
-const lucroDespesa = document.getElementById('chart-grafico');
+const ctx = document.getElementById('chart-grafico').getContext('2d');
 
-let grafico = new Chart(lucroDespesa, {} );
+let grafico = new Chart(ctx, {} );
 
 function carregarTabela(){
   grafico.destroy();
@@ -391,10 +668,12 @@ function carregarTabela(){
   const cfg = {
     type: tipoGrafico.value,
     data: data(dados),
-    options: option(tipoGrafico.value)
+    options: option(tipoGrafico.value,dadosGrafico.value),
+    plugins: plugins(tipoGrafico.value,dadosGrafico.value)
   }
-  grafico = new Chart(lucroDespesa, cfg );
-
+  console.log(cfg);
+  grafico = new Chart(ctx, cfg );
+  
  
 }
 window.onload = () => {
