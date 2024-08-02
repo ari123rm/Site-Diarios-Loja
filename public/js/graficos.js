@@ -448,7 +448,6 @@ function option(tipo,dados){
           anchor:'end',
           formatter: ((value,ctx) =>{
             nDados = ctx.chart.dataset
-            console.log(ctx)
             if(typeof value == typeof 1 && value != 0){
               if(dados != 'quantidadeVendas' && !(dados == 'quantidadeXvendas' && ctx.datasetIndex == 1)){
                 return value.toFixed(2);
