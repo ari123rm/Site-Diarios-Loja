@@ -526,6 +526,7 @@ function option(tipo,dados){
         retorno = {
           borderWidth:1,
           borderColor:'black',
+          plugins:{},
         };
       }
       
@@ -565,7 +566,9 @@ function option(tipo,dados){
       }else{
         retorno = {
           borderWidth:1,
-          borderColor:'black',};
+          borderColor:'black',
+          plugins:{},
+        };
       }
       break;
     case 'scatter':
@@ -582,7 +585,8 @@ function option(tipo,dados){
             type: 'linear',
             beginAtZero: true,
           }
-        }
+        },
+        plugins:{},
       }
       switch(dados){
         case 'quantidadeXvendas':
@@ -621,7 +625,8 @@ function option(tipo,dados){
     default:
       break;
   }
-  retorno.plugins.title ={
+  console.log(dadosGrafico.selectedOptions[0]);
+  retorno.plugins.title = {
     display: true,
     text: dadosGrafico.selectedOptions[0].innerText,
     padding: {
@@ -635,6 +640,7 @@ function option(tipo,dados){
     },
     color:'black',
   }
+ 
   return retorno;
 }
 

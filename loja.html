@@ -15,55 +15,69 @@
         <header>
             <ul type= "none">
                 <li><h1>Loja</h1></li>
-                <li><label for="selecionarCalendario">Diario: </label><input type="date" name="selecionarCalendario" id="calendario-input"><button id="butao-dia">Abrir Diario</button></li>
+                <li><label for="calendario-input">Diario: </label><input type="date" name="selecionarCalendario" id="calendario-input"><button id="butao-dia">Abrir Diario</button></li>
                 <li><input type="month" name="Mês-Impressao" id="mesImpressao"><button id ="printButton" onclick = "window.print()">Imprimir diario</button></li>
             </ul>
         </header>
         <div id = "seletor-graficos">
-            <select name="tipo-grafico" id="tipo-grafico">
-                <option value="bar" selected>Gráfico de Barra</option>
-                <option value="line">Gráfico de Linha</option>
-                <option value="pie">Gráfico de Pizza</option>
-                <option value="doughnut">Gráfico de Rosca</option>
-                <option value="scatter">Gráfico de Dispersão</option>
-            </select>
-            <select name="dados-grafico" id="dados-grafico">
-                <optgroup label = "Valor x Valor">
-                    <option value="vendasXdespesas" selected>Vendas X Despesas</option>
-                    <option value="quantidadeXvendas">Quantidade X Vendas</option>
-                </optgroup>
-                <optgroup label = "Valores Individuais">
-                    <option value="vendas">Vendas</option>
-                    <option value="despesas">Despesas</option>
-                    <option value="vendedor">Vendas de Funcionários</option>
-                    <option value="quantidadeVendas">Quantidade de Vendas</option>
-                    <option value="depositos">Depósitos</option>
-                </optgroup>
-                <optgroup label = "Totais">
-                    <option value="totalVenda">Total de Vendas</option>
-                    <option value="totalDespesas">Total de Despesas</option>
-                </optgroup>
-                <!--
-                <optgroup label = "Outros">
-                    <option value="horarioEntrada">Horários de Entrada</option>
-                    <option value="horarioSaida">Horários de Saída</option>
-                </optgroup>
-                -->
-            </select>
+            <div class = "select">
+
+            
+                <select name="tipo-grafico" id="tipo-grafico">
+                    <option value="bar" selected>Gráfico de Barra</option>
+                    <option value="line">Gráfico de Linha</option>
+                    <option value="pie">Gráfico de Pizza</option>
+                    <option value="doughnut">Gráfico de Rosca</option>
+                    <option value="scatter">Gráfico de Dispersão</option>
+                    <div class="select_arrow">
+                    </div>
+                </select>
+            </div>
+            <div class = "select">
+                <select name="dados-grafico" id="dados-grafico">
+                    <optgroup label = "Valor x Valor">
+                        <option value="vendasXdespesas" selected>Vendas X Despesas</option>
+                        <option value="quantidadeXvendas">Quantidade X Vendas</option>
+                    </optgroup>
+                    <optgroup label = "Valores Individuais">
+                        <option value="vendas">Vendas</option>
+                        <option value="despesas">Despesas</option>
+                        <option value="vendedor">Vendas de Funcionários</option>
+                        <option value="quantidadeVendas">Quantidade de Vendas</option>
+                        <option value="depositos">Depósitos</option>
+                    </optgroup>
+                    <optgroup label = "Totais">
+                        <option value="totalVenda">Total de Vendas</option>
+                        <option value="totalDespesas">Total de Despesas</option>
+                    </optgroup>
+                    <!--
+                    <optgroup label = "Outros">
+                        <option value="horarioEntrada">Horários de Entrada</option>
+                        <option value="horarioSaida">Horários de Saída</option>
+                    </optgroup>
+                    -->
+                    <div class="select_arrow">
+                    </div>
+                </select>
+            </div>
             <ul type="none" id = "periodo-grafico">
                 <li>
                     <input type="hidden" name="data1" id="grafico-data1">
                     <input type="hidden" name="data2" id="grafico-data2">
                 </li>
                 <li>
-                    <select name="TipoPeriodo-grafico" id="tipo-periodo-grafico">
-                        <option value="Geral" >Geral</option>
-                        <option value="Diario">Dia</option>
-                        <option value="Semanal">Semana</option>
-                        <option value="Mensal"selected>Mês</option>
-                        <option value="Anual">Ano</option>
-                        <option value="Custom">Custom</option>
-                    </select>
+                    <div class = "select">
+                        <select name="TipoPeriodo-grafico" id="tipo-periodo-grafico">
+                            <option value="Geral" selected>Geral</option>
+                            <option value="Diario">Dia</option>
+                            <option value="Semanal">Semana</option>
+                            <option value="Mensal">Mês</option>
+                            <option value="Anual">Ano</option>
+                            <option value="Custom">Custom</option>
+                            <div class="select_arrow">
+                            </div>
+                        </select>
+                    </div>
                 </li>
             </ul>
         </div>
