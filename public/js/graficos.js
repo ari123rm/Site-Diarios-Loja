@@ -68,7 +68,7 @@ function buildLabels(tipoLabel,dados){
       dados.forEach((element) => {
         element.despesas.forEach((despesa)=>{
           let verificador = true;
-          if(despesa.motivo == 'Depósito'|| despesa.motivo == 'nada'){
+          if(despesa.motivo == 'Depósito'|| despesa.motivo == 'nada' || despesa.motivo== 'Nada'){
             verificador = false
           }else{
             labels.forEach((label) =>{
@@ -107,26 +107,7 @@ function buildLabels(tipoLabel,dados){
   
 }
 
-//Criando os datasets
-class DataSet{
-  constructor(label,key,dados,background){
-    this.label = label;
-    this.data = dados;
-    this.backgroundColor = background;
-    this.parsing = {
-      yAxisKey: key,
-      key: key
-    }
-  }
-  obj(){
-    return {
-      label: this.label,
-      data: this.data,
-      backgroundColor: this.backgroundColor,
-      parsing:this.parsing
-    }
-  }
-}
+
 function buildDataSets(key,data,ano){
   let dataSets = [];
  
@@ -157,7 +138,7 @@ function buildDataSets(key,data,ano){
           v[index] += element.debito;
           v[index] += element.credito;
           element.despesas.forEach((despesa) =>{
-            if(despesa.motivo != "Depósito" && despesa.motivo != 'nada')d[index] += despesa.valor;
+            if(despesa.motivo != "Depósito" && despesa.motivo != 'nada'&& despesa.motivo != 'Nada')d[index] += despesa.valor;
             
           });
         }
@@ -170,10 +151,10 @@ function buildDataSets(key,data,ano){
             y:element
           });
         })
-        dataSets.push(new DataSet("Vendas x Despesas",['y'],XY,'yellow').obj());
+        dataSets.push(new DataSet("Vendas x Despesas",['y'],XY,[ "#fffde7","#fff9c4","#fff59d","#fff176","#ffee58","#ffeb3b","#fdd835","#fbc02d","#f9a825","#f57f17","#ffff8d","#ffea00"]).obj());
       }else{
-        dataSets.push(new DataSet("Vendas R$",'',v,['green']).obj());
-        dataSets.push(new DataSet("Despesas R$",'',d,['red']).obj());
+        dataSets.push(new DataSet("Vendas R$",'',v,[ "#e8f5e9","#c8e6c9","#a5d6a7","#81c784","#66bb6a","#4caf50","#43a047","#388e3c","#2e7d32","#1b5e20","#004d40","#003d33"]).obj());
+        dataSets.push(new DataSet("Despesas R$",'',d,["#ffebee","#ffcdd2","#ef9a9a","#e57373","#ef5350","#f44336","#e53935","#d32f2f","#c62828","#b71c1c","#ff8a80","#ff5252"]).obj());
       }
      
       break;
@@ -231,10 +212,10 @@ function buildDataSets(key,data,ano){
             y:element
           });
         })
-        dataSets.push(new DataSet("Quantidade x Vendas",['y'],XY,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
+        dataSets.push(new DataSet("Quantidade x Vendas",['y'],XY,["#e3f2fd","#bbdefb","#90caf9","#64b5f6","#42a5f5","#2196f3","#1e88e5","#1976d2","#1565c0","#0d47a1","#82b1ff","#448aff"]).obj());
       }else{
-        dataSets.push(new DataSet("Valor vendido em R$",[],vendasVend,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
-        dataSets.push(new DataSet("Quantidade de vendas",[], nVendas,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
+        dataSets.push(new DataSet("Valor vendido em R$",[],vendasVend,["#e3f2fd","#bbdefb","#90caf9","#64b5f6","#42a5f5","#2196f3","#1e88e5","#1976d2","#1565c0","#0d47a1","#82b1ff","#448aff"]).obj());
+        dataSets.push(new DataSet("Quantidade de vendas",[], nVendas,["#e3f2fd","#bbdefb","#90caf9","#64b5f6","#42a5f5","#2196f3","#1e88e5","#1976d2","#1565c0","#0d47a1","#82b1ff","#448aff"]).obj());
         
       }
 
@@ -261,7 +242,7 @@ function buildDataSets(key,data,ano){
               id = i;
             }
           });
-          if(despesa.motivo != 'Depósito' && despesa.motivo != 'nada'){
+          if(despesa.motivo != 'Depósito' && despesa.motivo != 'nada'&& despesa.motivo != 'Nada'){
             if(id != -1){
               valoresDespesa[id] += despesa.valor;
             }else{
@@ -273,7 +254,7 @@ function buildDataSets(key,data,ano){
         })
       })
       
-      dataSets.push(new DataSet("Valor em R$",[],valoresDespesa,['orange','lightCoral','orangeRed','IndianRed']).obj());
+      dataSets.push(new DataSet("Valor em R$",[],valoresDespesa,["#fff3e0","#ffe0b2","#ffcc80","#ffb74d","#ffa726","#ff9800","#fb8c00","#f57c00","#ef6c00","#e65100","#ffab40","#ff9100"]).obj());
       break;
     case "vendedor":
       let vendasV = [];
@@ -299,7 +280,7 @@ function buildDataSets(key,data,ano){
         })
       })
       
-      dataSets.push(new DataSet("Valor vendido em R$",[],vendasV,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
+      dataSets.push(new DataSet("Valor vendido em R$",[],vendasV,["#e3f2fd","#bbdefb","#90caf9","#64b5f6","#42a5f5","#2196f3","#1e88e5","#1976d2","#1565c0","#0d47a1","#82b1ff","#448aff"]).obj());
       break;
     case "quantidadeVendas":
       let quantidadeV = [];
@@ -324,16 +305,28 @@ function buildDataSets(key,data,ano){
           }
         })
       })
-      dataSets.push(new DataSet("Quantidade de vendas",[],quantidadeV,['aqua','CornflowerBlue','SkyBlue','blue','SteelBlue','lightCyan']).obj());
+      dataSets.push(new DataSet("Quantidade de vendas",[],quantidadeV,["#e3f2fd","#bbdefb","#90caf9","#64b5f6","#42a5f5","#2196f3","#1e88e5","#1976d2","#1565c0","#0d47a1","#82b1ff","#448aff"]).obj());
       break;
     case 'depositos':
-      let depo = []
+      let depo = [];
+      if(ano){
+        for(let i = 0;i<12;i++){
+          depo[i] = 0
+        }
+      }
       data.forEach((element,index) =>{
         element.despesas.forEach((despesa) =>{
-          if(despesa.motivo == "Depósito" && despesa.motivo != 'nada')depo[index] = despesa.valor;
+          if(despesa.motivo == "Depósito" && despesa.motivo != 'nada'&& despesa.motivo != 'Nada'){
+            if(ano){
+              depo[element.dia.getMonth()] += despesa.valor;
+            }else{
+              depo[index] = despesa.valor;
+            }
+            
+          }
         });
       } )
-      dataSets.push(new DataSet("Depósitos R$",'',depo,['lightSalmon']).obj());
+      dataSets.push(new DataSet("Depósitos R$",'',depo,["#fff3e0","#ffe0b2","#ffcc80","#ffb74d","#ffa726","#ff9800","#fb8c00","#f57c00","#ef6c00","#e65100","#ffab40","#ff9100"]).obj());
       break;
       break;
     case 'totalVenda':
@@ -355,7 +348,7 @@ function buildDataSets(key,data,ano){
         
       } )
       
-      dataSets.push(new DataSet("Vendas R$",'',sell,['lightGreen']).obj());
+      dataSets.push(new DataSet("Vendas R$",'',sell,["#e8f5e9","#c8e6c9","#a5d6a7","#81c784","#66bb6a","#4caf50","#43a047","#388e3c","#2e7d32","#1b5e20","#004d40","#003d33"]).obj());
       break;
     case 'totalDespesas':
       let desp = []
@@ -363,32 +356,19 @@ function buildDataSets(key,data,ano){
       data.forEach((element,index) =>{
         if(ano){
           element.despesas.forEach((despesa) =>{
-            if(despesa.motivo != "Depósito" && despesa.motivo != 'nada')desp[element.dia.getMonth()] += despesa.valor;
+            if(despesa.motivo != "Depósito" && despesa.motivo != 'nada'&& despesa.motivo != 'Nada')desp[element.dia.getMonth()] += despesa.valor;
           });
         }else{
           desp[index] = 0;
           element.despesas.forEach((despesa) =>{
-            if(despesa.motivo != "Depósito" && despesa.motivo != 'nada')desp[index] += despesa.valor;
+            if(despesa.motivo != "Depósito" && despesa.motivo != 'nada'&& despesa.motivo != 'Nada')desp[index] += despesa.valor;
           });
         }
         
       } )
-      dataSets.push(new DataSet("Despesas R$",'',desp,['lightCoral']).obj());
+      dataSets.push(new DataSet("Despesas R$",'',desp,["#ffebee","#ffcdd2","#ef9a9a","#e57373","#ef5350","#f44336","#e53935","#d32f2f","#c62828","#b71c1c","#ff8a80","#ff5252"]).obj());
       break;   
-    
-
-
-      //case 'horarioEntrada':
-      //  let entra = []
-      //  data.forEach((element,index) =>{
-      //    entra[index] = parseFloat(element.horarioEntrada.split(':')[0]) + parseFloat(element.horarioEntrada.split(':')[1])/100;
-      //  })
-      //  dataSets.push(new DataSet("Horario de Entrada",'',entra,['lightBlue']).obj());
-      //  break;
-//
-      //case 'horarioSaida':
-      //  
-      //  break;
+     
     default:
 
       break;
@@ -442,8 +422,9 @@ function option(tipo,dados){
             beginAtZero: true
           }
       },
+      borderWidth:1,
+      borderColor:'black',
       plugins: {
-
         datalabels: {
           anchor:'end',
           formatter: ((value,ctx) =>{
@@ -477,6 +458,8 @@ function option(tipo,dados){
             beginAtZero: true
           }
       },
+      borderWidth:1,
+      borderColor:'black',
       plugins: {
         datalabels: {
           anchor:'end',
@@ -507,8 +490,10 @@ function option(tipo,dados){
     }
     break;
     case 'pie':
-      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas" || dados == 'quantidadeXvendas'){
+      if((dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas" || dados == 'quantidadeXvendas')|| (periodoGrafico.value == 'Anual'|| periodoGrafico.value == 'Semanal')){
         retorno = {
+          borderWidth:1,
+          borderColor:'black',
           plugins: {
             anchor:'end',
             align: 'end',
@@ -518,8 +503,13 @@ function option(tipo,dados){
                 dataArr.forEach(data => {
                     sum += data;
                 });
-                let percentage = (value*100 / sum).toFixed(2)+"%";
-                return percentage;}),
+                let percentage = (value*100 / sum);
+                if(percentage>0){
+                  return percentage.toFixed(2)+"%"
+                }else{
+                  return '';
+                }
+              }),
               color: 'white',
               font:{
                 size: "16px",
@@ -533,13 +523,18 @@ function option(tipo,dados){
           }
         };
       }else{
-        retorno = {};
+        retorno = {
+          borderWidth:1,
+          borderColor:'black',
+        };
       }
       
       break;
     case 'doughnut':
-      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas'){
+      if((dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas')|| (periodoGrafico.value == 'Anual'|| periodoGrafico.value == 'Semanal' )){
         retorno = {
+          borderWidth:1,
+          borderColor:'black',
           plugins: {
             anchor:'end',
             align: 'end',
@@ -549,8 +544,13 @@ function option(tipo,dados){
                 dataArr.forEach(data => {
                     sum += data;
                 });
-                let percentage = (value*100 / sum).toFixed(2)+"%";
-                return percentage;}),
+                let percentage = (value*100 / sum);
+                if(percentage>0){
+                  return percentage.toFixed(2)+"%"
+                }else{
+                  return '';
+                }
+              }),
               color: 'white',
               font:{
                 size: "16px",
@@ -563,7 +563,9 @@ function option(tipo,dados){
           }
         };
       }else{
-        retorno = {};
+        retorno = {
+          borderWidth:1,
+          borderColor:'black',};
       }
       break;
     case 'scatter':
@@ -596,6 +598,7 @@ function option(tipo,dados){
             font: 'arial',
             display:true,
           };
+          break;
         case 'vendasXdespesas':
           retorno.scales.x.title = {
             color: 'red',
@@ -618,6 +621,20 @@ function option(tipo,dados){
     default:
       break;
   }
+  retorno.plugins.title ={
+    display: true,
+    text: dadosGrafico.selectedOptions[0].innerText,
+    padding: {
+      top: 10,
+      bottom: 30
+    },
+    font:{
+      size:24,
+      weight:'bold',
+      family:'sans-serif',
+    },
+    color:'black',
+  }
   return retorno;
 }
 
@@ -631,7 +648,7 @@ function plugins(tipo,dados){
       retorno.push(ChartDataLabels);
     break;
     case 'pie':
-      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas'){
+      if((dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas')|| (periodoGrafico.value == 'Anual'|| periodoGrafico.value == 'Semanal')){
         retorno.push(ChartDataLabels);
       }else{
 
@@ -639,7 +656,7 @@ function plugins(tipo,dados){
       
       break;
     case 'doughnut':
-      if(dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas'){
+      if((dados == "vendas" ||dados == "despesas" ||dados == "vendedor" || dados == "quantidadeVendas"|| dados == 'quantidadeXvendas')|| (periodoGrafico.value == 'Anual'|| periodoGrafico.value == 'Semanal')){
         retorno.push(ChartDataLabels);
       }else{
 
@@ -676,6 +693,7 @@ function carregarTabela(){
  
 }
 window.onload = () => {
+  mudarInputDatas(periodoGrafico.value)
   carregarTabela();
   loja.organize();
 }

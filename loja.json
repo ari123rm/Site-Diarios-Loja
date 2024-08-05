@@ -1312,6 +1312,48 @@
                     "valor": 211
                 }
             ]
+        },
+        {
+            "vendas": {
+                "dinheiro": 152,
+                "pix": 75,
+                "debito": 25,
+                "credito": 153
+            },
+            "despesas": [
+                {
+                    "motivo": "Nada",
+                    "dinheiroPix": "nada",
+                    "valor": 0
+                }
+            ],
+            "caixa": {
+                "inicial": 390,
+                "final": 542.1
+            },
+            "dia": "2024-07-31T03:00:00.000Z",
+            "horarioEntrada": "09:00",
+            "horarioSaida": "18:00",
+            "turnos": [
+                {
+                    "periodo": "Matutino",
+                    "nome": "Jamerson",
+                    "quantidadeVendas": 1,
+                    "valor": 50
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "Bianca",
+                    "quantidadeVendas": 5,
+                    "valor": 200
+                },
+                {
+                    "periodo": "Vespertino",
+                    "nome": "João",
+                    "quantidadeVendas": 3,
+                    "valor": 155
+                }
+            ]
         }
     ]
 }

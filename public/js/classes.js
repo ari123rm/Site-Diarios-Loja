@@ -208,7 +208,6 @@ class Diario extends Caixa{
         this.turnos.push(turno);
     }
 }
-
 class Loja {
     diarios
     constructor(){
@@ -347,6 +346,51 @@ class Loja {
         }
     } 
 }
+
+//Criando os datasets (grafico.js)
+class DataSet{
+    constructor(label,key,dados,background){
+      this.label = label;
+      this.data = dados;
+      this.backgroundColor = background;
+      this.parsing = {
+        yAxisKey: key,
+        key: key
+      }
+    }
+    obj(){
+      return {
+        label: this.label,
+        data: this.data,
+        backgroundColor: this.backgroundColor,
+        parsing:this.parsing
+      }
+    }
+  }
+
+// Criando o objeto para o calculo dos totais (impressao.js)
+class Total{
+    funcionarios
+    vendas
+    despesas
+    constructor(){
+        this.despesas ={
+            dinheiro:0,
+            pix:0,
+            depositos: 0,
+            total:0
+        };
+        this.vendas={
+            dinheiro:0,
+            pix:0,
+            debito:0,
+            credito:0,
+            total:0,
+        };
+        this.funcionarios=[]
+    }
+}
+
 
 //Adicionando a função .getWeek() na classe Date
 /**
